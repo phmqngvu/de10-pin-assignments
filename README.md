@@ -1,46 +1,44 @@
 # DE10 Pin Assignments
 
-This repository provides a clean and ready-to-use pin assignment file for the DE10 FPGA board, compatible with Intel Quartus.
+This repository provides a complete pin assignment file for the DE10 FPGA board, exported from Quartus.
+It includes full mappings for HPS, DDR3, GPIO, VGA, Audio, ADC, and basic peripherals like switches, LEDs, keys, and HEX displays.
 
 ---
 
 ## 📁 File
 
 * `de10_pin_assignments.csv`
-  Standard pin mapping for switches, LEDs, and basic I/O on the DE10 board.
+  Full pin assignment table (Quartus CSV export format)
 
 ---
 
-## ⚙️ Requirements
+## 📥 How to Import
 
-* Intel Quartus Prime
-* DE10 FPGA board (e.g., DE10-Lite / DE10-Nano)
+Follow these steps to import the pin assignments into your project using Intel Quartus Prime:
 
----
+1. Open your project in Quartus
+2. Go to:
 
-## 📥 How to Import Pin Assignments
-
-Follow these steps to import the CSV file into your Quartus project:
-
-1. Open your project in Quartus.
-2. Go to **Assignments → Import Assignments...**
-3. Select the file:
+   ```
+   Assignments → Import Assignments...
+   ```
+3. Select:
 
    ```
    de10_pin_assignments.csv
    ```
-4. Click **OK** to apply.
+4. Click **OK**
 
 ---
 
 ## ⚠️ Important Notes
 
-* Make sure your **top-level module name** is correctly set:
+* Make sure your **Top-level entity** is set correctly:
 
   * Go to: `Assignments → Settings → General`
-  * Set **Top-level entity** to match your Verilog module (e.g., `top`)
+  * Set it to match your module name (e.g., `top`)
 
-* Signal names in the CSV must match your code exactly.
+* Signal names in your code must match the CSV exactly
   Example:
 
   ```verilog
@@ -48,30 +46,20 @@ Follow these steps to import the CSV file into your Quartus project:
   output [9:0] LEDR;
   ```
 
-  → CSV must use:
+  → CSV uses:
 
   ```
-  SW[0], PIN_...
-  LEDR[0], PIN_...
+  SW[0]
+  LEDR[0]
   ```
 
-* Ensure the CSV format is strictly:
+* This file contains many signals (HPS, DDR3, etc.).
+  You do **not** need to use all of them — only the signals present in your design will be applied.
 
-  ```
-  To,Location
-  SIGNAL_NAME,PIN_NAME
-  ```
+* If import fails:
 
-* Save the file with **ANSI encoding** (avoid UTF-8 BOM issues).
+  * Ensure the file is not modified by Excel (no broken format)
+  * Avoid extra spaces or encoding issues
+  * Try saving as **ANSI**
 
 ---
-
-## 🧪 Example
-
-```verilog
-module top (
-    input wire [9:0] SW,
-    output wire [9:0] LEDR
-);
-    assign LEDR = SW;
-endmodule
