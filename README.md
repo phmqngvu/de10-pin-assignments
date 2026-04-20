@@ -27,7 +27,7 @@ Follow these steps to import the CSV file into your Quartus project:
 3. Select the file:
 
    ```
-   de10_standard.csv
+   de10_pin_assignments.csv
    ```
 4. Click **OK** to apply.
 
@@ -70,22 +70,8 @@ Follow these steps to import the CSV file into your Quartus project:
 
 ```verilog
 module top (
-    input  wire [9:0] SW,
+    input wire [9:0] SW,
     output wire [9:0] LEDR
 );
     assign LEDR = SW;
 endmodule
-```
-
----
-
-## 📌 Notes
-
-* This file is intended for quick setup and testing.
-* You can modify or extend the CSV to include HEX displays, KEY buttons, etc.
-
----
-
-## 🚀 License
-
-Free to use for learning and development.
