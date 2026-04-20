@@ -6,7 +6,7 @@ This repository provides a clean and ready-to-use pin assignment file for the DE
 
 ## 📁 File
 
-* `de10_standard.csv`
+* `de10_pin_assignments.csv`
   Standard pin mapping for switches, LEDs, and basic I/O on the DE10 board.
 
 ---
