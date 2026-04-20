@@ -1,0 +1,1 @@
+# de10-pin-assignments
